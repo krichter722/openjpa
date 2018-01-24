@@ -11,3 +11,7 @@ install: /bin/true
 script:
 - mvn --batch-mode install
     # separating build and tests into separate commands causes `Failed to execute goal org.apache.rat:apache-rat-plugin:0.11:check (default) on project openjpa-lib: Cannot read header: src/main/java/org/apache/openjpa/lib/ant/AbstractTask.java (No such file or directory)`
+- mvn cobertura:cobertura
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
